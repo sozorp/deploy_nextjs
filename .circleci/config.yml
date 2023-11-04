@@ -44,7 +44,7 @@ jobs:
 
             if [ ! -z "$NEW_INSTANCE_NAME" ]
             then
-              NEW_INSTANCE_ID=`aws ec2 run-instances --image-id ami-07ffb2f4d65357b42 --count 1 --instance-type t2.micro --key-name CircleCI --security-group-ids sg-0791c0115b3a5100a --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$NEW_INSTANCE_NAME}]" --query "Instances[].[InstanceId]" --output text`
+              NEW_INSTANCE_ID=`aws ec2 run-instances --image-id ami-07ffb2f4d65357b42 --count 1 --instance-type t2.micro --key-name passma --security-group-ids sg-0791c0115b3a5100a --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$NEW_INSTANCE_NAME}]" --query "Instances[].[InstanceId]" --output text`
               echo "New instance Id: $NEW_INSTANCE_ID"
               echo "Waiting for New Instance Start...."
               aws ec2 wait instance-running --instance-ids $NEW_INSTANCE_ID
